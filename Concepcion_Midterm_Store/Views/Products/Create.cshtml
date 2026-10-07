@@ -1,0 +1,129 @@
+@model Concepcion_Midterm_Store.Models.Product
+
+@{
+    ViewData["Title"] = "Add Product";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-7">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Add New Product</h3>
+                </div>
+
+                <div class="card-body">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name"
+                                   class="form-label"></label>
+
+                            <input asp-for="Name"
+                                   class="form-control"
+                                   placeholder="Enter product name" />
+
+                            <span asp-validation-for="Name"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description"
+                                   class="form-label"></label>
+
+                            <textarea asp-for="Description"
+                                      class="form-control"
+                                      rows="3"
+                                      placeholder="Enter product description"></textarea>
+
+                            <span asp-validation-for="Description"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price"
+                                   class="form-label"></label>
+
+                            <input asp-for="Price"
+                                   class="form-control"
+                                   type="text"
+                                   inputmode="decimal"
+                                   placeholder="Enter price" />
+
+                            <span asp-validation-for="Price"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Category"
+                                   class="form-label"></label>
+
+                            <select asp-for="Category"
+                                    class="form-select">
+
+                                <option value="">
+                                    -- Select Category --
+                                </option>
+
+                                <option value="School Supplies">
+                                    School Supplies
+                                </option>
+
+                                <option value="Electronics">
+                                    Electronics
+                                </option>
+
+                                <option value="Clothing">
+                                    Clothing
+                                </option>
+
+                                <option value="Food">
+                                    Food
+                                </option>
+
+                                <option value="Accessories">
+                                    Accessories
+                                </option>
+
+                            </select>
+
+                            <span asp-validation-for="Category"
+                                  class="text-danger"></span>
+                        </div>
+
+                        <button type="submit"
+                                class="btn btn-primary">
+                            Save Product
+                        </button>
+
+                        <a asp-action="Index"
+                           class="btn btn-secondary">
+                            Cancel
+                        </a>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
